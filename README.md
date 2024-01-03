@@ -13,9 +13,8 @@ This project will show you how to group emails threads using Python and Nylas.
 You'll need the following values:
 
 ```text
-ACCESS_TOKEN = ""
-CLIENT_ID = ""
-CLIENT_SECRET = ""
+V3_TOKEN = ""
+GRANT_ID = ""
 ```
 
 Add the above values to a new `.env` file:
@@ -39,7 +38,3 @@ Clone the repository. Go to your terminal and type:
 ```bash
 $ python3 EmailThreading.py
 ```
-
-## Learn more
-
-Visit our [Nylas Python SDK documentation](https://developer.nylas.com/docs/developer-tools/sdk/python-sdk/) to learn more.
