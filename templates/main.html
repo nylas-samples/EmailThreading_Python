@@ -30,7 +30,7 @@
                                                    data-accordion-target={{ _body }} 
                                                    aria-expanded="false" aria-controls={{ body }}>
 		<!-- Title of the thread -->
-		<span>{{ thread[0] }}</span>
+		<span>{{ thread[0].thread }}</span>
 		<svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" 
 			viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd"    
 			d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 
@@ -40,20 +40,20 @@
 		<div id={{ body }} class="hidden" aria-labelledby={{ heading }}>
 		<div class="p-5 font-light border border-b-0 border-gray-200 dark:border-gray-700">
 		<!-- Get size of thread array -->
-		{% set count = thread[1] | length %}
+		{% set count = thread | length %}
 		<!-- Define amount of elements on the grid -->
 		{% set count_str = "grid-rows-" + count | string()  %}
 		<div class="grid {{ count_str }} grid-flow-col gap-4">
 		<!-- Counter to access array elements -->
 		{% set _counter = namespace(index=0) %}
 		<!-- Loop through each email -->
-		{% for message in thread[1] %}
+		{% for message in thread %}
 			<div class="col-span-2 ...">
 				<!-- Display image and date/time of email -->
-				<img class="mx-auto" src="static/{{ thread[2][_counter.index] }}"><b>
-				<p class="text-center">{{ thread[3][_counter.index] }}</p></b><br>
+				<img class="mx-auto" src="static/{{ message.picture }}">
+				<b><p class="text-center">{{ message.names }}</p></b><br>
 				<!-- Display the email message -->
-				<p>{{ message | safe }}</p>
+				<p>{{ message.message | safe }}</p>
 			</div>
 		{% set _counter.index = _counter.index + 1 %}
 		{% endfor %}
